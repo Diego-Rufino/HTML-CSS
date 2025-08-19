@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    * {font-family: arial;}
+        body{ background-color:gray;}
+        form{ text-align: center;}
+
+    </style>
 </head>
 <body>
+    <form action="" method="post">
+        <label for="Nome">Nome</label>
+    <input type="text" name="nome" placeholder="Digite seu nome"> <br><br>
+
+    <label for="email">E-mail</label>
+    <input type="email"  name="email" placeholder="Digite seu E-mail"> <br><br>
+
+    <label for="senha">Senha</label>
+    <input type="password" name="Senha" placeholder="Senha"> <br><br>
+
+    <label for="Data">Data</label>
+    <input type="date" name="data"> <br><br>
+
+    <label for="estados">Estados</label>
+    <select name="estado" id="estado">
+        <option value="sp">SP</option>
+        <option value="mg">MG</option>
+        <option value="rj">RJ</option>
+    </select> <br><br>
     
+    <button id="enviar" type="subimit">Enviar</button>
+    <button id="cancelar">Cancelar</button> <br><br>
+
+    <label for="telefone">telefone</label>
+    <input type="tel" name="telefone"> <br><br>
+    
+    <label for="arquivo">Arquivo</label>
+    <input type="file" name="arquivo">
+    </form>
 </body>
 </html>
