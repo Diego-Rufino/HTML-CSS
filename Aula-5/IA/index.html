@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caffè Aurea — Cafeteria & Pâtisserie</title>
+  <meta name="description" content="Cafeteria chique e refinada: cafés especiais, pâtisserie artesanal e serviços sob medida para eventos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0c0c0e;
+      --bg-2:#121216;
+      --text:#eae7e1;
+      --muted:#bfb9ae;
+      --brand:#c9a66b; /* ouro suave */
+      --brand-2:#ac8b54;
+      --chip:#1c1c21;
+      --max:1200px;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.4);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:linear-gradient(180deg,var(--bg),var(--bg-2)); color:var(--text);
+      font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Arial;line-height:1.6; 
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+    /* NAV */
+    .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(8px);}
+    nav{
+      background:linear-gradient(180deg,rgba(12,12,14,.85),rgba(12,12,14,.65));
+      border-bottom:1px solid rgba(201,166,107,.16);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-family:"Marcellus",serif;letter-spacing:.5px}
+    .brand .logo{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #d9b97a, #8a6a35 60%, #3b2b12 100%);
+      position:relative;box-shadow:inset 0 2px 8px rgba(0,0,0,.6), 0 6px 18px rgba(0,0,0,.35)}
+    .brand span{font-size:1.25rem;font-weight:600}
+
+    .menu{display:flex;gap:18px;flex-wrap:wrap}
+    .menu a{padding:8px 12px;border-radius:999px;background:transparent;transition:.3s ease;opacity:.9}
+    .menu a:hover{background:rgba(201,166,107,.12);opacity:1}
+    .cta-btn{padding:10px 16px;border-radius:999px;background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#1a1409;font-weight:700;box-shadow:var(--shadow);}
+    .cta-btn:hover{transform:translateY(-1px);filter:saturate(110%)}
+
+    /* HERO */
+    .hero{
+      position:relative;min-height:86vh;display:grid;place-items:center;overflow:hidden;
+      background:
+        linear-gradient(180deg,rgba(12,12,14,.5),rgba(12,12,14,.88)),
+        url('https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=2000&auto=format&fit=crop');
+      background-size:cover;background-position:center; border-bottom:1px solid rgba(201,166,107,.2);
+    }
+    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(1000px 400px at 50% 100%, rgba(201,166,107,.15), transparent 60%)}
+    .hero-inner{position:relative;z-index:2;text-align:center;padding:80px 0}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;background:rgba(201,166,107,.12);border:1px solid rgba(201,166,107,.22);color:var(--muted);
+      padding:6px 12px;border-radius:999px;font-size:.85rem;letter-spacing:.4px}
+    .eyebrow svg{width:16px;height:16px}
+    .hero h1{font-family:"Marcellus",serif;font-size:clamp(2.4rem,6vw,4.2rem);margin:16px auto 10px;max-width:16ch}
+    .hero p{max-width:60ch;margin:0 auto 26px;color:#d9d5ce}
+    .hero .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .ghost{border:1px solid rgba(201,166,107,.4);background:transparent;color:var(--text);}
+
+    /* BADGES */
+    .badges{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+    .badge{background:var(--chip);border:1px solid rgba(201,166,107,.14);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:.85rem}
+
+    /* SECTION */
+    section{padding:80px 0;border-bottom:1px solid rgba(201,166,107,.12)}
+    section header{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:28px}
+    section h2{font-family:"Marcellus",serif;font-size:clamp(1.6rem,3.6vw,2.4rem);margin:0}
+    .subtitle{color:var(--muted)}
+
+    /* ABOUT */
+    .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .card{background:linear-gradient(180deg,#111114,#0c0c0e);border:1px solid rgba(201,166,107,.14);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card-inner{padding:26px}
+    .list{display:grid;gap:10px;margin:16px 0}
+    .list li{display:flex;gap:10px;align-items:flex-start}
+    .list svg{width:18px;height:18px;flex:0 0 auto;margin-top:3px}
+
+    /* MENU */
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .item{position:relative;overflow:hidden;border-radius:var(--radius);background:#0f0f12;border:1px solid rgba(201,166,107,.12)}
+    .item figure{height:180px;overflow:hidden}
+    .item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .item:hover img{transform:scale(1.06)}
+    .item .meta{display:flex;align-items:center;justify-content:space-between;padding:16px}
+    .price{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#1a1409;padding:6px 10px;border-radius:999px;font-weight:700}
+
+    /* SERVICES */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{padding:22px}
+    .service h3{margin-top:8px}
+    .kicker{color:var(--muted);font-size:.9rem}
+
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:12px}
+    .gallery .g{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(201,166,107,.12)}
+    .gallery .g img{width:100%;height:100%;object-fit:cover;filter:grayscale(8%);transition:transform .6s ease, filter .6s ease}
+    .gallery .g:hover img{transform:scale(1.05);filter:grayscale(0%)}
+
+    /* TESTIMONIALS */
+    .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .quote{padding:22px;min-height:180px}
+    .quote p{color:#d9d5ce}
+    .quote .who{display:flex;align-items:center;gap:12px;margin-top:14px;color:var(--muted)}
+    .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(180deg,#c2b8a4,#6d5b3a);border:1px solid rgba(255,255,255,.2)}
+
+    /* RESERVAS / CONTATO */
+    .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    form{display:grid;gap:12px}
+    input,select,textarea{
+      background:#0f0f12;border:1px solid rgba(201,166,107,.16);color:var(--text);
+      border-radius:12px;padding:12px 14px;font:inherit;outline:none;transition:.2s ease
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--brand)}
+    textarea{min-height:120px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .notice{color:var(--muted);font-size:.9rem}
+
+    /* FOOTER */
+    footer{padding:38px 0;color:#cfcac0}
+    .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:18px}
+    .logo-mark{display:flex;align-items:center;gap:10px}
+    .logo-mark .logo{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #d9b97a, #8a6a35 60%, #3b2b12 100%)}
+    .social{display:flex;gap:10px;margin-top:10px}
+    .social a{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#0f0f12;border:1px solid rgba(201,166,107,.16)}
+    .copy{margin-top:28px;color:var(--muted);font-size:.9rem}
+
+    /* UTILS */
+    .gold{color:var(--brand)}
+    .pill{display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid rgba(201,166,107,.2);background:rgba(201,166,107,.08)}
+
+    /* RESPONSIVE */
+    @media (max-width:1000px){
+      .grid-2,.menu-grid,.services,.testi,.contact,.foot{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .menu-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <nav>
+      <div class="container nav">
+        <a class="brand" href="#top" aria-label="Caffè Aurea - início">
+          <span class="logo" aria-hidden="true"></span>
+          <span>Caffè <span class="gold">Aurea</span></span>
+        </a>
+        <div class="menu" role="navigation" aria-label="Menu principal">
+          <a href="#sobre">Sobre</a>
+          <a href="#menu">Menu</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <a class="cta-btn" href="#contato">Reservar mesa</a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="hero-inner container">
+      <span class="eyebrow">
+        <!-- ícone xícara -->
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 8h13a4 4 0 1 0 0 8H7a4 4 0 0 1-4-4V8Zm18 4a2 2 0 0 1-2 2 4 4 0 0 0 0-4 2 2 0 0 1 2 2Z"/></svg>
+        Cafés especiais & pâtisserie artesanal
+      </span>
+      <h1>Uma experiência <span class="gold">sofisticada</span> do grão à xícara</h1>
+      <p>
+        No Caffè Aurea unimos torrefação autoral, confeitaria fina e hospitalidade impecável.
+        Sabores elegantes, ambiente acolhedor e serviços pensados nos mínimos detalhes.
+      </p>
+      <div class="actions">
+        <a class="cta-btn" href="#menu">Ver cardápio</a>
+        <a class="cta-btn ghost" href="#servicos">Conhecer serviços</a>
+      </div>
+      <div class="badges">
+        <span class="badge">⭐ 4.9/5 • 2.1k avaliações</span>
+        <span class="badge">☕ Single-Origin & Blends exclusivos</span>
+        <span class="badge">🍰 Pâtisserie diária</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="container">
+    <header>
+      <h2>Sobre nós</h2>
+      <p class="subtitle">Elegância clássica, técnicas modernas e respeito ao produtor.</p>
+    </header>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-inner">
+          <h3>Filosofia <span class="pill">farm-to-cup</span></h3>
+          <p>
+            Trabalhamos com micro-lotes de fazendas sustentáveis e acompanhamos o processo do campo até a xícara.
+            Nossos baristas são certificados e nossos grãos passam por torra de precisão para revelar notas aromáticas únicas.
+          </p>
+          <ul class="list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm-1 15-4-4 1.41-1.41L11 13.17l5.59-5.59L18 9z"/></svg>
+              Certificações SCA e equipe treinada continuamente
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm-1 15-4-4 1.41-1.41L11 13.17l5.59-5.59L18 9z"/></svg>
+              Parcerias com produtores de comércio justo
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm-1 15-4-4 1.41-1.41L11 13.17l5.59-5.59L18 9z"/></svg>
+              Torra própria com perfis para espresso e filtro
+            </li>
+          </ul>
+          <div class="pill">Wi‑Fi de cortesia • Ambiente pet friendly • Acessibilidade</div>
+        </div>
+      </div>
+      <div class="card">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1600&auto=format&fit=crop" alt="Barista preparando espresso em uma máquina profissional" />
+        </figure>
+        <div class="card-inner">
+          <h3>Ambiente</h3>
+          <p>Design atemporal com madeira nobre, mármore e iluminação cênica. Música ambiente em volume confortável e mesas com tomadas individuais para o seu conforto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU / CARDÁPIO -->
+  <section id="menu" class="container">
+    <header>
+      <h2>Cardápio</h2>
+      <p class="subtitle">Clássicos perfeitos e criações autorais com grãos selecionados.</p>
+    </header>
+    <div class="menu-grid">
+      <!-- Cafés -->
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?q=80&w=1200&auto=format&fit=crop" alt="Cappuccino com latte art" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Cappuccino Aurea</strong>
+            <div class="kicker">Duplo, leite vaporizado, finalização com cacau 70%</div>
+          </div>
+          <span class="price">R$ 16</span>
+        </div>
+      </div>
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1472973681244-f5bc0f0f775f?q=80&w=1200&auto=format&fit=crop" alt="Espresso duplo" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Espresso Duplo</strong>
+            <div class="kicker">Blend da casa com notas de caramelo e amêndoas</div>
+          </div>
+          <span class="price">R$ 12</span>
+        </div>
+      </div>
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop" alt="Cafeteira pour-over com filtro" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Filtro V60</strong>
+            <div class="kicker">Origem única (sazonal) • 300ml</div>
+          </div>
+          <span class="price">R$ 18</span>
+        </div>
+      </div>
+
+      <!-- Pâtisserie -->
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="Croissant amanteigado" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Croissant de Manteiga</strong>
+            <div class="kicker">Folhado artesanal em fermentação lenta</div>
+          </div>
+          <span class="price">R$ 14</span>
+        </div>
+      </div>
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?q=80&w=1200&auto=format&fit=crop" alt="Tartelette de frutas" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Tartelette de Frutas</strong>
+            <div class="kicker">Creme de baunilha, frutas da estação</div>
+          </div>
+          <span class="price">R$ 22</span>
+        </div>
+      </div>
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop" alt="Fatia de bolo com cobertura" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Bolo do Dia</strong>
+            <div class="kicker">Receitas autorais rotativas</div>
+          </div>
+          <span class="price">R$ 16</span>
+        </div>
+      </div>
+
+      <!-- Gelados & Especiais -->
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop" alt="Affogato" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Affogato</strong>
+            <div class="kicker">Gelato de baunilha, espresso duplo</div>
+          </div>
+          <span class="price">R$ 20</span>
+        </div>
+      </div>
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1523365280197-f1783db9fe62?q=80&w=1200&auto=format&fit=crop" alt="Iced latte" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Iced Latte</strong>
+            <div class="kicker">Espresso, leite gelado, xarope artesanal</div>
+          </div>
+          <span class="price">R$ 18</span>
+        </div>
+      </div>
+      <div class="item">
+        <figure><img src="https://images.unsplash.com/photo-1528838064552-141c8f345188?q=80&w=1200&auto=format&fit=crop" alt="Mocha com chocolate" /></figure>
+        <div class="meta">
+          <div>
+            <strong>Mocha 70%</strong>
+            <div class="kicker">Chocolate belga, finalização com chantilly</div>
+          </div>
+          <span class="price">R$ 19</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos" class="container">
+    <header>
+      <h2>Serviços</h2>
+      <p class="subtitle">Soluções sob medida para momentos memoráveis.</p>
+    </header>
+    <div class="services">
+      <div class="card service">
+        <span class="pill">Eventos Corporativos</span>
+        <h3>Bar de Café & Coffee Break</h3>
+        <p>Estrutura completa com baristas, estação de espresso, filtro e bebidas assinadas. Cardápio customizável para reuniões, lançamentos e convenções.</p>
+        <p class="kicker">Capacidade: 20–500 pessoas</p>
+      </div>
+      <div class="card service">
+        <span class="pill">Consultoria</span>
+        <h3>Treinamento de Equipes</h3>
+        <p>Workshops de extração, torra básica e serviço. Indicadores de qualidade, padronização e desenho de receitas para operação consistente.</p>
+        <p class="kicker">Planos mensais e sob demanda</p>
+      </div>
+      <div class="card service">
+        <span class="pill">Encomendas</span>
+        <h3>Bolachas, bolos & boxes</h3>
+        <p>Pâtisserie artesanal para aniversários, mini weddings e presentes corporativos. Personalizações com monogramas e identidade visual.</p>
+        <p class="kicker">Entrega em toda a cidade</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section id="galeria" class="container">
+    <header>
+      <h2>Galeria</h2>
+      <p class="subtitle">Detalhes que contam histórias.</p>
+    </header>
+    <div class="gallery">
+      <div class="g" style="grid-row:span 2">
+        <img src="https://images.unsplash.com/photo-1502452213786-a5bc0a67e963?q=80&w=1600&auto=format&fit=crop" alt="Interior elegante de cafeteria" />
+      </div>
+      <div class="g"><img src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=1200&auto=format&fit=crop" alt="Grãos de café torrados" /></div>
+      <div class="g"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1200&auto=format&fit=crop" alt="Balcão com doces" /></div>
+      <div class="g"><img src="https://images.unsplash.com/photo-1485808191679-5f86510681a3?q=80&w=1200&auto=format&fit=crop" alt="Barista fazendo latte art" /></div>
+      <div class="g"><img src="https://images.unsplash.com/photo-1528697203043-733bfdca2f9e?q=80&w=1200&auto=format&fit=crop" alt="Mesa posta com xícaras" /></div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" class="container">
+    <header>
+      <h2>Depoimentos</h2>
+      <p class="subtitle">O que nossos clientes dizem.</p>
+    </header>
+    <div class="testi">
+      <div class="card quote">
+        <p>“O melhor cappuccino da cidade! Atendimento atencioso e um ambiente que inspira.”</p>
+        <div class="who"><span class="avatar"></span> <span>Camila M.</span></div>
+      </div>
+      <div class="card quote">
+        <p>“A pâtisserie é impecável. Dá para sentir o cuidado em cada detalhe.”</p>
+        <div class="who"><span class="avatar"></span> <span>Rafael M.</span></div>
+      </div>
+      <div class="card quote">
+        <p>“Contratamos o bar de café para nosso evento e foi um sucesso absoluto.”</p>
+        <div class="who"><span class="avatar"></span> <span>Bianca M.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO / RESERVAS -->
+  <section id="contato" class="container">
+    <header>
+      <h2>Reservas & Contato</h2>
+      <p class="subtitle">Estamos prontos para receber você.</p>
+    </header>
+    <div class="contact">
+      <div class="card">
+        <div class="card-inner">
+          <form action="#" method="post" onsubmit="event.preventDefault();alert('Obrigado! Entraremos em contato por e-mail.');">
+            <div class="form-row">
+              <div>
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" placeholder="Seu nome completo" required />
+              </div>
+              <div>
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="voce@email.com" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="data">Data</label>
+                <input id="data" name="data" type="date" />
+              </div>
+              <div>
+                <label for="pessoas">Nº de pessoas</label>
+                <select id="pessoas" name="pessoas">
+                  <option>1</option><option>2</option><option>3</option><option>4</option>
+                  <option>5</option><option>6</option><option>7+</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Conte-nos sobre sua reserva ou evento..."></textarea>
+            </div>
+            <button class="cta-btn" type="submit">Enviar pedido</button>
+            <p class="notice">Ao enviar, você concorda com nossa política de privacidade.</p>
+          </form>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <h3>Onde estamos</h3>
+          <p>Rua do Aroma, 123 — Centro<br/>Seg–Sex 8h–20h • Sáb/Dom 9h–19h</p>
+          <div class="pill">Telefone: (11) 1234-5678</div>
+          <div style="height:220px;border-radius:12px;overflow:hidden;border:1px solid rgba(201,166,107,.16);margin-top:12px">
+            <img src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1600&auto=format&fit=crop" alt="Mapa estilizado da cidade" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%)"/>
+          </div>
+          <p class="notice">Estacionamento conveniado a 50m.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="logo-mark"><span class="logo"></span><strong>Caffè Aurea</strong></div>
+        <p>Qualidade, finesse e acolhimento em cada detalhe.</p>
+        <div class="social" aria-label="Redes sociais">
+          <a href="#" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3zm5 3.5A5.5 5.5 0 1 0 17.5 13 5.507 5.507 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm6-3a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
+          </a>
+          <a href="#" aria-label="WhatsApp" title="WhatsApp">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.52 3.48A11.9 11.9 0 0 0 12.05.06 11.99 11.99 0 0 0 2 12.02a12 12 0 0 0 1.76 6.25L2 24l5.9-1.73a12.02 12.02 0 0 0 5.63 1.43h.01A12 12 0 0 0 24 12c0-3.2-1.25-6.2-3.48-8.52zM12.54 21.3h-.01a9.3 9.3 0 0 1-4.75-1.3l-.34-.2-3.5 1.03 1.04-3.41-.22-.35A9.3 9.3 0 1 1 21.3 12a9.23 9.23 0 0 1-8.76 9.3zm5.27-6.96c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.15s-.74.93-.91 1.12-.34.22-.63.07a7.54 7.54 0 0 1-2.22-1.37 8.34 8.34 0 0 1-1.54-1.9c-.16-.26 0-.4.12-.55.12-.14.26-.37.39-.55.13-.18.17-.31.26-.52.08-.22.04-.41-.02-.57-.07-.15-.64-1.54-.87-2.1-.23-.55-.47-.47-.64-.48l-.55-.01c-.19 0-.5.07-.76.37s-.99.97-.99 2.37 1.02 2.75 1.16 2.94c.14.18 2.01 3.07 4.86 4.3.68.29 1.2.47 1.61.61.68.22 1.3.19 1.79.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.25.17-1.36-.07-.11-.26-.18-.55-.33z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.4 3h-1.8v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+        </div>
+        <div class="copy">© <span id="year"></span> Caffè Aurea. Todos os direitos reservados.</div>
+      </div>
+      <div>
+        <strong>Atendimento</strong>
+        <p>Seg–Sex 8h–20h<br/>Sáb/Dom 9h–19h<br/>Feriados consultar</p>
+      </div>
+      <div>
+        <strong>Contato</strong>
+        <p>contato@caffeaurea.com<br/>(11) 1234-5678</p>
+      </div>
+      <div>
+        <strong>Newsletter</strong>
+        <p>Receba novidades e ofertas exclusivas.</p>
+        <form onsubmit="event.preventDefault();alert('Obrigado por assinar nossa newsletter!');">
+          <input type="email" placeholder="seu@email.com" required>
+          <div style="height:10px"></div>
+          <button class="cta-btn" type="submit">Assinar</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Atualiza ano automaticamente
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
