@@ -3,9 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sistema de cadastro escolar</title>
+    <link rel="stylesheet" href="/Sistemas/style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <h1>🏫Sistema de cadastro Escolar</h1>
+        <p>Bem-Vindos ao sistema de cadastro da nossa escola virtual!</p>
+<h2>📋Menu de cadastro</h2>
+<a href="/Sistemas/aluno.html"><button>👨‍🎓Cadastrar aluno</button></a>
+<a href="/Sistemas/professor.html"><button>👨‍🏫Cadastrar professor</button></a>
+<a href="/Sistemas/curso.html"><button>📚Cadastrar curso</button></a>
+<a href="/Sistemas/livro.html"><button>📖Cadastrar livro</button></a>
+
+        <div class="formulario"> 
+<h2>📚Cadastro de Curso</h2>
+<form action="">
+    <label for="nome">Nome do curso:</label> <br>
+    <input type="text" class="nome"><br><br>
+
+    <label for="CPF">Código do curso:</label><br>
+        <input name="CPF"><br><br>
+
+         <label for="formação">Categoria:</label><br>
+    <select name="série" id="série">
+        <option value="selecione">Selecione a categoria:</option>
+        <option value="ciencias-exatas">Ciências Exatas</option>
+    <option value="ciencias-humanas">Ciências Humanas</option>
+    <option value="ciencias-biologicas">Ciências Biológicas</option>
+    <option value="linguagens">Linguagens</option>
+    <option value="artes">Artes</option>
+  </select><br><br>
+
+
+        <label for="ex">Duração (meses):</label><br>
+        <input type="ex" class="ex"><br><br>
+
+
+    <p>Modalidade:</p>
+  <input type="radio" id="presencial" name="modalidade" value="presencial">
+  <label for="presencial">Presencial</label><br>
+
+  <input type="radio" id="online" name="modalidade" value="online">
+  <label for="online">Online</label><br>
+
+  <input type="radio" id="hibrido" name="modalidade" value="hibrido">
+  <label for="hibrido">Híbrido</label><br><br>
+
+  
+   <p>Pré-Requisitos:</p>
+  <input type="checkbox" id="ensino-medio" name="pre-requisitos" value="ensino-medio">
+  <label for="ensino-medio">Ensino Médio</label><br>
+
+  <input type="checkbox" id="curso-basico" name="pre-requisitos" value="curso-basico">
+  <label for="curso-basico">Curso Básico</label><br>
+
+  <input type="checkbox" id="experiencia-previa" name="pre-requisitos" value="experiencia-previa">
+  <label for="experiencia-previa">Experiência Prévia</label><br><br>
+
+  <p>Descrição do Curso:</p>
+  <textarea id="descricao" name="descricao" rows="5" cols="50" placeholder="Escreva a descrição do curso"></textarea><br><br>
+
+   <button type="submit">Cadastrar Curso</button>
+  <button type="reset">Limpar Dados</button>   
+</form>
+        </div>
+    </div>
+
+
+
 </body>
 </html>

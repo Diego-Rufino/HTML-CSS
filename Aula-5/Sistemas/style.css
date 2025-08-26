@@ -1,32 +1,40 @@
 body{
-    background-color: rgb(120, 203, 203);
+    background-color: rgb(3, 7, 95);
     font-family: Arial;
 }
 
 button{
-    background-color: #c6f300;
-    color: black;
+    background-color: rgb(3, 7, 95);
+    color: rgb(255, 255, 255);
     padding: 10px;
     margin: 5px;
     border: none;
 }
 
 .container{
-    background-color: white;
+    background-color: rgb(144, 203, 203);
     padding: 20px;
     margin: 20px;
 }
 
 .formulario{
-    background-color: #83cbd7;
+    background-color: #4977c6;
     padding: 15px;
     margin: 10px;
 }
 
 .nome{
-    width: 400px;
+    width: 395px;
 }
 
 .email{
-    width: 300px;
+    width: 335px;
+}
+
+.e-mail{
+    width: 335px;
+}
+
+.ex{
+    width: 70px;
 }
