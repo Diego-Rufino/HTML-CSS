@@ -1,0 +1,32 @@
+body{
+    background-color: rgb(120, 203, 203);
+    font-family: Arial;
+}
+
+button{
+    background-color: #c6f300;
+    color: black;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+}
+
+.container{
+    background-color: white;
+    padding: 20px;
+    margin: 20px;
+}
+
+.formulario{
+    background-color: #83cbd7;
+    padding: 15px;
+    margin: 10px;
+}
+
+.nome{
+    width: 400px;
+}
+
+.email{
+    width: 300px;
+}

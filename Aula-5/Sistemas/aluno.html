@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de cadastro escolar</title>
+    <link rel="stylesheet" href="/Sistemas/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🏫Sistema de cadastro Escolar</h1>
+        <p>Bem-Vindos ao sistema de cadastro da nossa escola virtual!</p>
+<h2>📋Menu de cadastro</h2>
+<a href="/aluno.html"><button>👨‍🎓Cadastrar aluno</button></a>
+<a href="/professor.html"><button>👨‍🏫Cadastrar professor</button></a>
+<a href="/curso.html"><button>📚Cadastrar curso</button></a>
+<a href="/livro.html"><button>📖Cadastrar livro</button></a>
+
+        <div class="formulario"> 
+<h2>Cadastrar aluno</h2>
+<form action="">
+    <label for="nome">Nome completo:</label> <br>
+    <input type="text" class="nome"><br><br>
+
+    <label for="Data">Data de Nascimento:</label><br>
+        <input type="date" name="data"><br><br>
+
+        <label for="Email">E-mail:</label><br>
+        <input type="email" name="email" class="email"><br><br>
+
+        <label for="Telefone">Telefone:</label><br>
+        <input type="tel" name="telefone"><br><br>
+
+        <label for="estados">Série/Ano</label><br>
+    <select name="série" id="série">
+        <option value="selecione">Selecione a série:</option>
+        <option value="1°EM">1°EM</option>
+        <option value="2°EM">2°EM</option>
+        <option value="3°EM">3°EM</option>
+    </select> <br><br>
+
+    <label for="Período">Período:</label> <br>
+    <input type="radio" name="Manhã"
+    value="Manhã">Manhã <br>
+    <input type="radio" name="Tarde"
+    value="Tarde">Tarde <br>
+    <input type="radio" name="Noite"
+    value="Noite">Noite <br><br>
+
+    <label for="Atividades">Atividades Extras:</label><br>
+<input type="checkbox" name="Esportes"
+    value="Esportes">Esportes<br>
+    <input type="checkbox" name="Música"
+    value="checkbox">Música <br>
+    <input type="checkbox" name="Teatro"
+    value="Teatro">Teatro <br>
+    <input type="checkbox" name="Informática"
+    value="Informática">Informática<br>
+
+    <label for="observacoes">Obsevações</label><br>
+    <textarea id="observacoes" name="observacoes" rows="4" cols="70"></textarea><br>
+
+<button id="Cadastrar" type="submit">Cadastrar Aluno</button>
+<button id="Limpar dados" type="reset">Limpar dados</button>    
+</form>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
